@@ -112,6 +112,7 @@ public class interfaz_main extends JFrame{
 		pa.validate();//Magicamente lo resetea.
 		if(panelTablero.verificar_tablero()) {
 			System.out.println("tablero completado");//Modificar para lo que necesite.
+			System.out.println("loles");
 		}
 	}
 	
