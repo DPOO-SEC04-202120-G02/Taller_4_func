@@ -28,12 +28,6 @@ public class PanelBotones extends JPanel implements ActionListener{
 		setLayout( new GridLayout(4,1) );
 
 		btn_1 = new JButton("NUEVO");
-		/*
-		 * ActionListener btn_1_Lis = new ActionListener() {
-		 * 
-		 * @Override public void actionPerformed(ActionEvent e) {
-		 * principal.Nuevo_Tablero(); } };
-		 */
 		btn_1.addActionListener(new ActionListener() {
 			
 			@Override
@@ -57,6 +51,12 @@ public class PanelBotones extends JPanel implements ActionListener{
 		
 		setVisible(true);
 
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {//No hace nada, no sé porque me hace ponerlo otra vez.
+		// TODO Auto-generated method stub
+		
 	}
 
 }

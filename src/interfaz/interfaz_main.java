@@ -2,6 +2,8 @@ package interfaz;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
@@ -13,7 +15,7 @@ public class interfaz_main extends JFrame{
 	private PanelCaracteristicas panelCaracteristicas;
 	private PanelInfo panelInfo;
 	private PanelTablero panelTablero;
-	private JPanel pa;
+	private JPanel pa;//El panel que organiza a los otros
 	private Tablero tablero_actual;
 	
 	public interfaz_main() {
@@ -41,7 +43,43 @@ public class interfaz_main extends JFrame{
 		int dif=panelCaracteristicas.GetDificultad();
 		tablero_actual= new Tablero(dim);
 		tablero_actual.desordenar(dif);
-		panelTablero = new PanelTablero(tablero_actual.darTablero());
+		panelTablero = new PanelTablero(tablero_actual.darTablero(),this);
+		panelTablero.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int click_x = e.getX();
+				int click_y = e.getY();
+				int[] casilla = panelTablero.convertirCoordenadasACasilla(click_x, click_y);
+				jugar(casilla);
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		
+		
 		pa.add(panelTablero,BorderLayout.CENTER);
 		add(pa);
 		setVisible(true);
@@ -52,25 +90,30 @@ public class interfaz_main extends JFrame{
 		
 	}
 	
-	public void Nuevo_Tablero() {
+	public void Nuevo_Tablero() {//Genera un nuevo tablero
 		
 		BorderLayout layout = (BorderLayout)pa.getLayout();
 		pa.remove(layout.getLayoutComponent(BorderLayout.CENTER));
 		
 		int dim=panelCaracteristicas.GetDimension();
-		System.out.println(dim);
 		int dif=panelCaracteristicas.GetDificultad();
-		System.out.println(dif);
 		tablero_actual= new Tablero(dim);
 		tablero_actual.desordenar(dif);
-		panelTablero = new PanelTablero(tablero_actual.darTablero());
+		panelTablero = new PanelTablero(tablero_actual.darTablero(),this);
 		pa.add(panelTablero,BorderLayout.CENTER);
-		System.out.println("dadwada");
 		pa.validate();//Magicamente lo resetea.
 	}
 	
-	//Listeners
-	
+	public void jugar(int[] coordenadas) {//
+		tablero_actual.jugar(coordenadas[0],coordenadas[1]);
+		boolean[][] new_matrix = tablero_actual.darTablero();
+		panelTablero = new PanelTablero(new_matrix,this);
+		pa.add(panelTablero,BorderLayout.CENTER);
+		pa.validate();//Magicamente lo resetea.
+		if(panelTablero.verificar_tablero()) {
+			System.out.println("tablero completado");//Modificar para lo que necesite.
+		}
+	}
 	
 	
 }

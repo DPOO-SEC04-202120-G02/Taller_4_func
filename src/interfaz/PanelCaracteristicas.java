@@ -57,13 +57,12 @@ public class PanelCaracteristicas extends JPanel{
 	}
 
 	public int GetDimension() {
-		
 		String valor =(String) cmbb_1.getSelectedItem();
 		char va = valor.charAt(0);
 		return Character.getNumericValue(va);
 	}
 	
-	public int GetDificultad() {
+	public int GetDificultad() {//retorna el numero de casillas que se desordenan dada una dificultad
 		if (chh_facil.isSelected()) {
 			return 5;
 		}else if (chh_medio.isSelected()) {
