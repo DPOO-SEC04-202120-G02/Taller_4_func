@@ -12,8 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 public class Casilla extends JPanel{
-
-	private JLabel lbl;
 	
 	public Casilla() {
 		

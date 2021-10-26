@@ -17,7 +17,8 @@ public class PanelCaracteristicas extends JPanel{
 	private JComboBox cmbb_1;
 	private JLabel blanck_spc1;
 	private JLabel blanck_spc2;
-
+	private ButtonGroup myButtonGroup;
+	
 	public PanelCaracteristicas() {
 		//setLayout( new GridLayout( 1, 6 ) );
 		setLayout(new FlowLayout());
@@ -55,4 +56,21 @@ public class PanelCaracteristicas extends JPanel{
 		
 	}
 
+	public int GetDimension() {
+		
+		String valor =(String) cmbb_1.getSelectedItem();
+		char va = valor.charAt(0);
+		return Character.getNumericValue(va);
+	}
+	
+	public int GetDificultad() {
+		if (chh_facil.isSelected()) {
+			return 5;
+		}else if (chh_medio.isSelected()) {
+			return 7;
+		}else {
+			return 10;
+		}
+	}
+	
 }
