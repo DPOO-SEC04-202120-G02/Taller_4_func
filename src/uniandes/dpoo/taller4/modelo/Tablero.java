@@ -104,7 +104,8 @@ public class Tablero
 
 			int fila = (int) (Math.random() * tam);
 			int col = (int) (Math.random() * tam);
-			//System.out.println(Integer.toString(col+1)+","+Integer.toString(fila+1)); guia para verificar solucion
+			//System.out.println("Guía para solucionar el tablero (de abajo hacia arriba): ");
+			//System.out.println(Integer.toString(col+1)+","+Integer.toString(fila+1)); //guia para verificar solucion
 			jugar(fila, col);
 		}
 		salvar_tablero();

@@ -33,12 +33,37 @@ public class PanelBotones extends JPanel implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				principal.Nuevo_Tablero();
+				principal.cambiarJugadas();
 			}
 		});
 		
 		btn_2 = new JButton("REINICIAR");
+		btn_2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				principal.reiniciarTablero();
+				principal.cambiarJugadas();
+			}
+		});
+		
 		btn_3 = new JButton("TOP-10");
+		btn_3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				principal.promptTop10();
+			}
+		});
+		
 		btn_4 = new JButton("CAMBIAR JUGADOR");
+		btn_4.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				principal.promptDialogoRegistro();
+			}
+		});
 
 		add(btn_1); 
 		//grid.add(Box.createVerticalStrut(3));

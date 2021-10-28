@@ -31,5 +31,14 @@ public class PanelInfo extends JPanel{
 		
 		setVisible(true);
 	}
+	
+	public void cambiarJugador(String nombre) {
+		dispJugador.setText(nombre);
+	}
+	
+	public void cambiarJugadas(int jugadas) {
+		String strJug = String.valueOf(jugadas); 
+		dispJugadas.setText(strJug);
+	}
 
 }
